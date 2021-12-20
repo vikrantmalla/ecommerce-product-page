@@ -1,0 +1,328 @@
+@import'../styles/mixin';
+.container_thumbnails {
+    display: none;
+}
+
+.container {
+    @include bannerImg(url(../images/image-product-1.jpg));
+}
+
+.container_two {
+    @include bannerImg(url(../images/image-product-2.jpg));
+}
+
+.container_three {
+    @include bannerImg(url(../images/image-product-3.jpg));
+}
+
+.container_four {
+    @include bannerImg(url(../images/image-product-4.jpg));
+}
+
+.container:hover,
+.container_two:hover,
+.container_three:hover,
+.container_four:hover {
+    cursor: pointer;
+}
+
+.prev {
+    @include sliderArrow();
+}
+
+.next {
+    @include sliderArrow();
+}
+
+.thumbnails div:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+section {
+    padding: 1.5rem 1.5rem 4rem;
+    h1 {
+        margin: 0;
+        font-size: 0.9rem;
+        letter-spacing: 0.07rem;
+        text-transform: uppercase;
+        color: hsl(26, 100%, 55%);
+    }
+    h2 {
+        margin: 0.8rem 0 1rem 0;
+        font-size: 1.8rem;
+    }
+    p {
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: hsl(219, 9%, 45%);
+    }
+    .price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h3 {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        span {
+            padding: 0.1rem 0.5rem;
+            margin-left: 0.7rem;
+            border-radius: 0.4rem;
+            font-size: 1rem;
+            font-weight: 700;
+            background: hsl(25, 100%, 94%);
+            color: hsl(26, 100%, 55%);
+        }
+        h4 {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 400;
+            text-decoration: line-through;
+            text-decoration-thickness: 0.12rem;
+            color: hsl(220, 14%, 75%);
+        }
+    }
+    .number_add {
+        .number {
+            width: 100%;
+            height: 3.5rem;
+            padding: 0.2rem;
+            margin-top: 1.8rem;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: hsl(223, 64%, 98%);
+            button {
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+        }
+        .add {
+            width: 100%;
+            height: 3.5rem;
+            margin-top: 1.2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            background: hsl(26, 100%, 55%);
+            color: hsl(0, 0%, 100%);
+            fill: hsl(0, 0%, 100%);
+            box-shadow: 0 1.3rem 1rem hsl(25, 100%, 94%);
+            font-family: inherit;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            img {
+                margin-right: 1rem;
+            }
+            &:hover {
+                background: hsl(26, 100%, 65%);
+            }
+        }
+    }
+}
+
+@media (min-width: 42em) {
+    main {
+        padding: 4rem 3rem 2rem;
+        .mobile_container {
+            display: none;
+        }
+        .container_thumbnails {
+            display: block;
+            // background-color: aqua;
+        }
+        .container,
+        .container_two,
+        .container_three,
+        .container_four {
+            height: 30rem;
+            border-radius: 1rem;
+        }
+        .prev,
+        .next {
+            display: none;
+        }
+        .thumbnails {
+            margin: 2.5rem 0 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .thumbnail_one {
+            @include thumbnailImg( url(../images//image-product-1-thumbnail.jpg));
+            @include thumbnailSize(5rem, 5rem);
+        }
+        .thumbnail_two {
+            @include thumbnailImg( url(../images//image-product-2-thumbnail.jpg));
+            @include thumbnailSize(5rem, 5rem);
+        }
+        .thumbnail_three {
+            @include thumbnailImg( url(../images//image-product-3-thumbnail.jpg));
+            @include thumbnailSize(5rem, 5rem);
+        }
+        .thumbnail_four {
+            @include thumbnailImg( url(../images//image-product-4-thumbnail.jpg));
+            @include thumbnailSize(5rem, 5rem);
+        }
+        .thumbnail_active::after {
+            position: absolute;
+            content: "";
+            height: 4.7rem;
+            width: 4.7rem;
+            border-radius: 0.7rem;
+            background: hsla(0, 0%, 3%, 0.5);
+            border: 2.5px solid hsl(26, 100%, 55%);
+        }
+        section {
+            .price {
+                display: block;
+                h4 {
+                    margin-top: 0.5rem;
+                }
+            }
+            .number_add {
+                margin-top: 3rem;
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                .number {
+                    margin: 0;
+                    padding: 0 1rem;
+                    width: 60%;
+                }
+                .add {
+                    margin-top: 0;
+                }
+            }
+        }
+        .lightbox_close {
+            height: 1.5rem;
+            width: 1.5rem;
+            position: fixed;
+            bottom: 85vh;
+            left: 68%;
+            transform: translateX(-50%);
+            z-index: 20;
+            border: none;
+        }
+    }
+}
+
+@media (min-width: 62em) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-content: center;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 4rem 3rem 2rem;
+        .container_thumbnails {
+            display: block;
+            margin: 0 auto;
+        }
+        .container,
+        .container_two,
+        .container_three,
+        .container_four {
+            width: 25rem;
+            height: 25rem;
+            border-radius: 1rem;
+            margin: 0 auto;
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: space-around;
+            margin: 2.5 auto;
+            .thumbnail_active::after {
+                width: 3.7rem;
+                height: 3.7rem;
+            }
+            .thumbnail_one {
+                @include thumbnailSize(4rem, 4rem);
+            }
+            .thumbnail_two {
+                @include thumbnailSize(4rem, 4rem);
+            }
+            .thumbnail_three {
+                @include thumbnailSize(4rem, 4rem);
+            }
+            .thumbnail_four {
+                @include thumbnailSize(4rem, 4rem);
+            }
+        }
+        section {
+            align-self: center;
+            padding: 1rem;
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            .add {
+                margin: 0;
+            }
+        }
+        .lightbox_close {
+            height: 1.5rem;
+            width: 1.5rem;
+            position: fixed;
+            bottom: 85vh;
+            left: 68%;
+            transform: translateX(-50%);
+            z-index: 20;
+            border: none;
+        }
+    }
+}
+
+@media (min-width: 87em) {
+    main {
+        .container,
+        .container_two,
+        .container_three,
+        .container_four {
+            width: 30rem;
+            height: 30rem;
+        }
+        .container_thumbnails {
+            display: block;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        .thumbnails {
+            .thumbnail_active::after {
+                @include thumbnailSize(6rem, 6rem);
+            }
+            .thumbnail_one {
+                @include thumbnailSize(6rem, 6rem);
+            }
+            .thumbnail_two {
+                @include thumbnailSize(6rem, 6rem);
+            }
+            .thumbnail_three {
+                @include thumbnailSize(6rem, 6rem);
+            }
+            .thumbnail_four {
+                @include thumbnailSize(6rem, 6rem);
+            }
+        }
+        section {
+            max-width: 500px;
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+        .lightbox_close {
+            bottom: 85vh;
+            left: 66%;
+        }
+    }
+}

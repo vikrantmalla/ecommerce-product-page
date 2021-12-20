@@ -1,0 +1,124 @@
+@import'../../styles/mixin';
+@mixin LightboxImg($imageURL) {
+    background: $imageURL;
+    height: 25rem;
+    padding: 0 0.8rem;
+    border-radius: 0.8rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lightbox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    .container {
+        @include LightboxImg(url(../../images/image-product-1.jpg));
+    }
+    .container_two {
+        @include LightboxImg(url(../../images/image-product-2.jpg));
+    }
+    .container_three {
+        @include LightboxImg(url(../../images/image-product-3.jpg));
+    }
+    .container_four {
+        @include LightboxImg(url(../../images/image-product-4.jpg));
+    }
+    .prev {
+        @include lightboxArrow( -3rem);
+    }
+    .next {
+        @include lightboxArrow( 3rem);
+    }
+    .lightbox_thumbnails {
+        margin-top: 1.8rem;
+        display: flex;
+        justify-content: space-evenly;
+        .lightbox_thumbnail_one {
+            @include lightboxthumbnail(url(../images/image-product-1-thumbnail.jpg));
+        }
+        .lightbox_thumbnail_two {
+            @include lightboxthumbnail(url(../images/image-product-2-thumbnail.jpg));
+        }
+        .lightbox_thumbnail_three {
+            @include lightboxthumbnail(url(../images/image-product-3-thumbnail.jpg));
+        }
+        .lightbox_thumbnail_four {
+            @include lightboxthumbnail(url(../images/image-product-4-thumbnail.jpg));
+        }
+        .lightbox_thumbnail_one:hover,
+        .lightbox_thumbnail_two:hover,
+        .lightbox_thumbnail_three:hover,
+        .lightbox_thumbnail_four:hover {
+            cursor: pointer;
+        }
+        .lightbox_thumbnail_active::after {
+            position: absolute;
+            content: "";
+            height: 4.8rem;
+            width: 4.8rem;
+            border-radius: 0.7rem;
+            background: hsla(0, 0%, 100%, 0.5);
+            border: 2.5px solid hsl(26, 100%, 55%);
+        }
+    }
+}
+
+@media (min-width: 62em) {
+    .lightbox {
+        width: 40vw;
+        .prev {
+            @include lightboxArrow( -2.5rem);
+        }
+        .next {
+            @include lightboxArrow( 2.5rem);
+        }
+    }
+}
+
+@media (min-width: 87em) {
+    .lightbox {
+        width: 35vw;
+        .container {
+            height: 30rem;
+        }
+        .container_two {
+            height: 30rem;
+        }
+        .container_three {
+            height: 30rem;
+        }
+        .container_four {
+            height: 30rem;
+        }
+        .lightbox_thumbnails {
+            .lightbox_thumbnail_one {
+                height: 5.5rem;
+                width: 5.5rem;
+            }
+            .lightbox_thumbnail_two {
+                height: 5.5rem;
+                width: 5.5rem;
+            }
+            .lightbox_thumbnail_three {
+                height: 5.5rem;
+                width: 5.5rem;
+            }
+            .lightbox_thumbnail_four {
+                height: 5.5rem;
+                width: 5.5rem;
+            }
+            .lightbox_thumbnail_active::after {
+                height: 5.5rem;
+                width: 5.5rem;
+            }
+        }
+    }
+}

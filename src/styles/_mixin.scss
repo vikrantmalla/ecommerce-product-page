@@ -1,0 +1,65 @@
+@mixin flex($direction, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: center;
+}
+
+@mixin bannerImg($imageURL) {
+    height: 21rem;
+    padding: 0 0.8rem;
+    background: $imageURL;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin sliderArrow {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    padding: .6rem .8rem;
+}
+
+@mixin thumbnailImg($imageURL) {
+    background: $imageURL;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@mixin thumbnailSize($height, $width) {
+    height: $height;
+    width: $width;
+    border-radius: 0.7rem;
+}
+
+@mixin lightboxthumbnail($imageURL) {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 0.7rem;
+    background: $imageURL;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@mixin lightboxArrow( $direction) {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    padding: 1rem 1.2rem;
+    position: relative;
+    left: $direction;
+    &:hover {
+        cursor: pointer;
+        color: aqua;
+    }
+}
