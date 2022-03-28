@@ -56,12 +56,12 @@
                 align-items: flex-start;
                 .details_heading {
                     font-size: 1.01rem;
-                    margin-bottom: .5rem;
+                    margin-bottom: 0.5rem;
                 }
                 p {
                     font-size: 1.01rem;
                     span {
-                        margin-left: .5rem;
+                        margin-left: 0.5rem;
                         font-size: 1.07rem;
                         font-weight: 700;
                         color: hsl(0, 0%, 0%);
@@ -106,10 +106,9 @@
 
 @media (min-width: 62em) {
     .cart_modal {
-        width: 30%;
+        width: 35%;
         height: 18rem;
-        transform: translateX(50%);
-        // background-color: pink;
+        transform: translateX(180%);
         box-shadow: 0 0.8rem 0.6rem hsl(220, 13%, 70%);
         .header {
             height: 3rem;
@@ -127,6 +126,20 @@
             .cart_filled {
                 gap: 1rem;
             }
+        }
+    }
+}
+
+@media (min-width: 87em) {
+    .cart_modal {
+        width: 30%;
+        height: 18rem;
+        transform: translateX(220%);
+        .header {
+            height: 3rem;
+        }
+        main {
+            height: 7rem;
         }
     }
 }

@@ -1,54 +1,51 @@
-import React, { useState } from 'react'
-
+import React, { useReducer } from 'react'
+import reducer from "../reducers/cartReducer"
 
 export const CartContext = React.createContext();
 
+const initalState = {
+  itemCount: 0,
+  addedToCart: false,
+  cartTotal: 0
+}
 
 const CartProvider = (props) => {
-  const [itemCount, setItemCount] = useState(0);  
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [cartTotal, setCartTotal] = useState(0);
+  const [state, dispatch] = useReducer(reducer, initalState)
 
-// increment no
+  // increment no
   const addItemHandler = () => {
-    setItemCount(itemCount + 1);
-
-    if (itemCount >= 5) {
-      setItemCount(5);
-    }
+    return dispatch({
+      type: "ADD_ITEM"
+    })
   };
   // decrement no
   const removeItemHandler = () => {
-    setItemCount(itemCount - 1);
-
-    if (itemCount <= 0) {
-      setItemCount(0);
-    }
+    return dispatch({
+      type: "REMOVE_ITEM"
+    })
   };
   //add to cart button
   const addToCartHandler = () => {
-    if (itemCount >= 1) {
-      setAddedToCart(true);
-    }
-    setCartTotal(cartTotal + itemCount);
+    return dispatch({
+      type: "ADD_TO_CART"
+    })
   };
   //remove items form cartmodal
   const deleteItemHandler = () => {
-    setCartTotal(cartTotal - 1);
-    if (cartTotal <= 1) {
-      setAddedToCart(false);
-    }
+    return dispatch({
+      type: "DELETE_FROM_CART"
+    })
   };
   //checkout from cartmodal
   const checkoutHandler = () => {
-    setCartTotal(0);
-    setItemCount(0);
-    setAddedToCart(false);
+    return dispatch({
+      type: "CHECKOUT"
+    })
   };
 
 
   const cartContext = {
-    itemCount, cartTotal, addItemHandler, removeItemHandler, addToCartHandler,  addedToCart, deleteItemHandler, checkoutHandler
+    ...state, addItemHandler, removeItemHandler, addToCartHandler, deleteItemHandler, checkoutHandler
   };
 
   return (
